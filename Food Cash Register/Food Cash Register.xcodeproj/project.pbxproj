@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18591AD526A6A02B00C9A74E /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18591AD426A6A02B00C9A74E /* Private.swift */; };
 		1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870E30F26A56B1F00B9E70E /* NumberPadView.swift */; };
 		1883BED926A5D4CC0068579A /* SquarePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883BED826A5D4CC0068579A /* SquarePayment.swift */; };
 		189DE37B26A3C85900358C7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE37A26A3C85900358C7B /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18591AD426A6A02B00C9A74E /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		1870E30F26A56B1F00B9E70E /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
 		1883BED826A5D4CC0068579A /* SquarePayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarePayment.swift; sourceTree = "<group>"; };
 		189DE37726A3C85900358C7B /* Food Cash Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Cash Register.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +79,7 @@
 				1870E30F26A56B1F00B9E70E /* NumberPadView.swift */,
 				189DE38E26A3C95500358C7B /* SettingsView.swift */,
 				1883BED826A5D4CC0068579A /* SquarePayment.swift */,
+				18591AD426A6A02B00C9A74E /* Private.swift */,
 				189DE38026A3C85C00358C7B /* Assets.xcassets */,
 				189DE38526A3C85C00358C7B /* LaunchScreen.storyboard */,
 				189DE38826A3C85C00358C7B /* Info.plist */,
@@ -170,6 +173,7 @@
 				189DE39726A4847C00358C7B /* PaymentView.swift in Sources */,
 				189DE37D26A3C85900358C7B /* SceneDelegate.swift in Sources */,
 				189DE37F26A3C85900358C7B /* ContentView.swift in Sources */,
+				18591AD526A6A02B00C9A74E /* Private.swift in Sources */,
 				1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */,
 				1883BED926A5D4CC0068579A /* SquarePayment.swift in Sources */,
 			);

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PaymentView: View {
     @ObservedObject var orders : FoodSelection
+    @State private var sheetIsActive = false
     
     var body: some View {
         HStack {
@@ -31,9 +32,12 @@ struct PaymentView: View {
             VStack(alignment:.trailing){
                 Text("\(totalPrice())円")
                     .font(.system(size: 50))
-                    .padding(.bottom)
+                    .padding(.top)
+                Spacer()
                 HStack {
-                    Button(action: {}){
+                    Button(action: {
+                        sheetIsActive = true
+                    }){
                         VStack {
                             Image(systemName: "banknote")
                                 .font(.system(size: 60))
@@ -48,7 +52,9 @@ struct PaymentView: View {
                     }
                     .accentColor(.primary)
                     .padding(.trailing,80)
-                    Button(action: {}){
+                    Button(action: {
+                        
+                    }){
                         VStack {
                             Image(systemName: "creditcard")
                                 .font(.system(size: 60))
@@ -63,9 +69,13 @@ struct PaymentView: View {
                             .foregroundColor(Color(UIColor.systemGray5)))
                     }
                 }
-                Spacer()
+                .padding(.bottom)
+                
             }
-            .frame(width:400)
+            .frame(width:350)
+        }
+        .sheet(isPresented: $sheetIsActive){
+            SheetView(isAvtive: $sheetIsActive)
         }
         .navigationTitle("決済")
     }
@@ -76,6 +86,30 @@ struct PaymentView: View {
             price += (food.count * food.food.price)
         }
         return price
+    }
+}
+
+private struct SheetView: View {
+    @Binding var isAvtive: Bool
+    @State private var yen = String()
+    var body: some View {
+        NavigationView{
+            VStack {
+                Text("おつりの金額を入力")
+                Text("\(yen)円")
+                    .font(.system(size: 50))
+                NumberPadView(number: $yen)
+            }
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button(action:{
+                        isAvtive = false
+                    }){
+                        Text("完了")
+                    }
+                }
+            })
+        }
     }
 }
 
