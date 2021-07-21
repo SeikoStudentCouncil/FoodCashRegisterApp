@@ -15,7 +15,7 @@ struct NumberPadView: View {
             ForEach(0...2,id:\.self){ rowIndex in
                 HStack {
                     ForEach(1...3,id:\.self){ index in
-                        NumberPadButtonView(textField: $number,number: "\((rowIndex*3)+index)")
+                        NumberPadButtonView(isActive:.constant(true),textField: $number,number: "\((rowIndex*3)+index)")
                     }
                 }
             }
@@ -32,7 +32,7 @@ struct NumberPadView: View {
                     }
                     .frame(width: 60, height: 60)
                 }
-                NumberPadButtonView(textField: $number, number: "0")
+                NumberPadButtonView(isActive: .constant(!number.isEmpty),textField: $number, number: "0")
                 Button(action:{
                     if !number.isEmpty{
                         number.removeLast(1)
@@ -52,10 +52,15 @@ struct NumberPadView: View {
 }
 
 private struct NumberPadButtonView: View {
+    @Binding var isActive : Bool
     @Binding var textField: String
     let number: String
     var body: some View {
-        Button(action: {textField += number}){
+        Button(action: {
+            if isActive{
+                textField += number
+            }
+        }){
             ZStack {
                 Circle()
                     .foregroundColor(Color(UIColor.systemGray6))

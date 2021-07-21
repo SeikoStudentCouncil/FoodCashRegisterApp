@@ -10,6 +10,7 @@ import SwiftUI
 struct PaymentView: View {
     @ObservedObject var orders : FoodSelection
     @State private var sheetIsActive = false
+    @State private var change: Int? =  nil
     
     var body: some View {
         HStack {
@@ -30,52 +31,59 @@ struct PaymentView: View {
             }
             Divider()
             VStack(alignment:.trailing){
-                Text("\(totalPrice())円")
-                    .font(.system(size: 50))
-                    .padding(.top)
-                Spacer()
-                HStack {
-                    Button(action: {
-                        sheetIsActive = true
-                    }){
-                        VStack {
-                            Image(systemName: "banknote")
-                                .font(.system(size: 60))
-                            Text("現金決済")
-                                .font(.system(size: 20))
-                                .foregroundColor(.primary)
-                        }
-                        .background(
-                        RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 150, height: 100)
-                            .foregroundColor(Color(UIColor.systemGray5)))
-                    }
-                    .accentColor(.primary)
-                    .padding(.trailing,80)
-                    Button(action: {
-                        
-                    }){
-                        VStack {
-                            Image(systemName: "creditcard")
-                                .font(.system(size: 60))
-                            Text("電子決済")
-                                .font(.system(size: 20))
-                                .foregroundColor(.primary)
-                        }
-                        .foregroundColor(.accentColor)
-                        .background(
-                        RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 150, height: 100)
-                            .foregroundColor(Color(UIColor.systemGray5)))
+                VStack(alignment:.trailing){
+                    Text("¥\(totalPrice())")
+                    if let change = change{
+                        Text("¥\(change)")
+                        Text("¥\(change - totalPrice())")
                     }
                 }
-                .padding(.bottom)
-                
+                .font(.system(size: 30))
+                .padding(.top)
+                Spacer()
+                if change == nil{
+                    HStack {
+                        Button(action: {
+                            sheetIsActive = true
+                        }){
+                            VStack {
+                                Image(systemName: "banknote")
+                                    .font(.system(size: 60))
+                                Text("現金決済")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.primary)
+                            }
+                            .background(
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width: 150, height: 100)
+                                .foregroundColor(Color(UIColor.systemGray5)))
+                        }
+                        .accentColor(.primary)
+                        .padding(.trailing,80)
+                        Button(action: {
+                            
+                        }){
+                            VStack {
+                                Image(systemName: "creditcard")
+                                    .font(.system(size: 60))
+                                Text("電子決済")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.primary)
+                            }
+                            .foregroundColor(.accentColor)
+                            .background(
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width: 150, height: 100)
+                                .foregroundColor(Color(UIColor.systemGray5)))
+                        }
+                    }
+                    .padding(.bottom)
+                }
             }
             .frame(width:350)
         }
         .sheet(isPresented: $sheetIsActive){
-            SheetView(isAvtive: $sheetIsActive)
+            SheetView(change: $change,price : .constant(totalPrice()),isActive: $sheetIsActive)
         }
         .navigationTitle("決済")
     }
@@ -90,23 +98,36 @@ struct PaymentView: View {
 }
 
 private struct SheetView: View {
-    @Binding var isAvtive: Bool
+    @Binding var change : Int?
+    @Binding var price : Int
+    @Binding var isActive: Bool
     @State private var yen = String()
     var body: some View {
         NavigationView{
             VStack {
                 Text("おつりの金額を入力")
-                Text("\(yen)円")
+                    .font(.system(size: 30))
+                Text("¥\(yen)")
                     .font(.system(size: 50))
                 NumberPadView(number: $yen)
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing){
-                    Button(action:{
-                        isAvtive = false
-                    }){
-                        Text("完了")
+                    if let entered = Int(yen) {
+                        if entered >= price{
+                            Button(action:{
+                                    change = Int(yen)
+                                    isActive = false
+                                }){
+                                    Text("完了")
+                                }
+                        }
                     }
+                }
+                ToolbarItem(placement: .navigationBarLeading){
+                    Button(action: {isActive = false}, label: {
+                        Text("キャンセル")
+                    })
                 }
             })
         }
