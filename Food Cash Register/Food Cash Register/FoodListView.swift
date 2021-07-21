@@ -31,6 +31,7 @@ let data :[FoodDetail] = [FoodDetail(titile: "焼きそば", subtitle: "塩", pr
 struct FoodListView: View {
     
     @StateObject private var orders = FoodSelection()
+    @State private var navigationActive = false
     
     var body: some View {
         ScrollView{
@@ -45,7 +46,7 @@ struct FoodListView: View {
             ToolbarItem(placement:.navigationBarTrailing){
                 if countTheNumberOfOrders() != 0{
                     NavigationLink(
-                        destination: PaymentView(orders: orders),
+                        destination: PaymentView(orders: orders,navigationActive: $navigationActive),isActive: $navigationActive,
                         label: {
                             Text("決定")
                         })
