@@ -99,6 +99,6 @@ private struct SheetView: View {
 
 struct CashPaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        CashPaymentView(orders: FoodSelection(), navigationActive: .constant(true))
+        CashPaymentView(orders: FoodSelection())
     }
 }
