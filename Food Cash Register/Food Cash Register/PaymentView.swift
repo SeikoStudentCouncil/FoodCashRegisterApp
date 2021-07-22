@@ -43,7 +43,7 @@ struct PaymentView: View {
                 .padding(.leading)
                 Spacer()
                 Group {
-                    NavigationLink(destination: CashPaymentView(orders: orders,navigationActive: $navigationActive)){
+                    NavigationLink(destination: CashPaymentView(orders: orders)){
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)
                                 .frame(width: 150, height: 100)

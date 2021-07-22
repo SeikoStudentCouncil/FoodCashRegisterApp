@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CashPaymentView: View {
     @ObservedObject var orders : FoodSelection
-    @Binding var navigationActive: Bool
     @State private var sheetIsActive = true
     @State private var paid: Int? =  nil
     
@@ -43,7 +42,8 @@ struct CashPaymentView: View {
         }
         .toolbar(content: {
             ToolbarItem(placement:.navigationBarTrailing){
-                Button(action: {navigationActive = false}, label: {
+                Button(action: {
+                }, label: {
                     Text("完了")
                 })
             }

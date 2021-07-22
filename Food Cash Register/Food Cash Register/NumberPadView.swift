@@ -20,18 +20,7 @@ struct NumberPadView: View {
                 }
             }
             HStack {
-                Button(action:{
-                    if !number.isEmpty{
-                        number.removeAll()}}){
-                    ZStack {
-                        Circle()
-                            .foregroundColor(Color(UIColor.systemGray6))
-                        Image(systemName:"clear")
-                            .font(.system(size: 30))
-                            .foregroundColor(Color(UIColor.darkGray))
-                    }
-                    .frame(width: 60, height: 60)
-                }
+                NumberPadButtonView(isActive: .constant(!number.isEmpty),textField: $number, number: "00")
                 NumberPadButtonView(isActive: .constant(!number.isEmpty),textField: $number, number: "0")
                 Button(action:{
                     if !number.isEmpty{
