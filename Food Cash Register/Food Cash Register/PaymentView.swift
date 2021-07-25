@@ -59,7 +59,7 @@ struct PaymentView: View {
                     }
                     .accentColor(.primary)
                     Button(action: {
-                        
+                        payBySquare(price: totalPrice(), note: "食品")
                     }){
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)

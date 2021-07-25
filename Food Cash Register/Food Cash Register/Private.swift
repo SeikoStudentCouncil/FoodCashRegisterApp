@@ -7,5 +7,5 @@
 
 import Foundation
 
-let callbackURL = URL(string: "sq0idp-qiwKd4g26Tpdlw5eY1QFdQ")!
+let callbackURL = URL(string: "food-register-app://")!
 let applicationID = "sq0idp-qiwKd4g26Tpdlw5eY1QFdQ"
