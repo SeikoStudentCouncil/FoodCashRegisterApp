@@ -1,0 +1,6 @@
+framework module Pods_Food_Cash_Register {
+  umbrella header "Pods-Food Cash Register-umbrella.h"
+
+  export *
+  module * { export * }
+}

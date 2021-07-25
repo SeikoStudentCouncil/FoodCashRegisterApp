@@ -4,10 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>square-commerce-v1</string>
-	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,7 +22,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.SeikoFestaInternal.Food-Cash-Register</string>
+			<string>Square</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>food-register-app</string>
@@ -35,8 +31,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>LSApplicationCategoryType</key>
 	<array>
 		<dict>
@@ -44,6 +38,12 @@
 			<string></string>
 		</dict>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>square-commerce-v1</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -76,8 +76,6 @@
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>

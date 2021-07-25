@@ -6,3 +6,6 @@
 //
 
 import Foundation
+
+let callbackURL = URL(string: "sq0idp-qiwKd4g26Tpdlw5eY1QFdQ")!
+let applicationID = "sq0idp-qiwKd4g26Tpdlw5eY1QFdQ"

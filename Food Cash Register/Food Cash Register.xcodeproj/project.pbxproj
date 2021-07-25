@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0074A7C2CA7AD018B41BCBA6 /* Pods_Food_Cash_Register.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281BC7F1FF16E3789ED66DD8 /* Pods_Food_Cash_Register.framework */; };
 		184F774C26A87F9B0070404A /* CashPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F774B26A87F9B0070404A /* CashPaymentView.swift */; };
 		18591AD526A6A02B00C9A74E /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18591AD426A6A02B00C9A74E /* Private.swift */; };
 		1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870E30F26A56B1F00B9E70E /* NumberPadView.swift */; };
@@ -39,7 +40,6 @@
 		184F774B26A87F9B0070404A /* CashPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashPaymentView.swift; sourceTree = "<group>"; };
 		18591AD426A6A02B00C9A74E /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		1870E30F26A56B1F00B9E70E /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
-		18747CE026A9D6B600B1F81C /* SquarePointOfSaleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = SquarePointOfSaleSDK.framework; path = ../../../../Carthage/Build/iOS/SquarePointOfSaleSDK.framework; sourceTree = "<group>"; };
 		1883BED826A5D4CC0068579A /* SquarePayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarePayment.swift; sourceTree = "<group>"; };
 		189DE37726A3C85900358C7B /* Food Cash Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Cash Register.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		189DE37A26A3C85900358C7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +52,9 @@
 		189DE38E26A3C95500358C7B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		189DE39226A42C4D00358C7B /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
 		189DE39626A4847C00358C7B /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		281BC7F1FF16E3789ED66DD8 /* Pods_Food_Cash_Register.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Cash_Register.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		791EEC69BECF8DA480F5E6E9 /* Pods-Food Cash Register.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Cash Register.release.xcconfig"; path = "Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register.release.xcconfig"; sourceTree = "<group>"; };
+		A102573CA5ACC9ADF47D8BCF /* Pods-Food Cash Register.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Cash Register.debug.xcconfig"; path = "Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,16 +62,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0074A7C2CA7AD018B41BCBA6 /* Pods_Food_Cash_Register.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18747CD726A9CC9000B1F81C /* Frameworks */ = {
+		0C3F1C5F6B92EC8574324E41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				18747CE026A9D6B600B1F81C /* SquarePointOfSaleSDK.framework */,
+				281BC7F1FF16E3789ED66DD8 /* Pods_Food_Cash_Register.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -78,7 +82,8 @@
 			children = (
 				189DE37926A3C85900358C7B /* Food Cash Register */,
 				189DE37826A3C85900358C7B /* Products */,
-				18747CD726A9CC9000B1F81C /* Frameworks */,
+				842F7113047B8752061D39D5 /* Pods */,
+				0C3F1C5F6B92EC8574324E41 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +124,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		842F7113047B8752061D39D5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A102573CA5ACC9ADF47D8BCF /* Pods-Food Cash Register.debug.xcconfig */,
+				791EEC69BECF8DA480F5E6E9 /* Pods-Food Cash Register.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,11 +140,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 189DE38B26A3C85C00358C7B /* Build configuration list for PBXNativeTarget "Food Cash Register" */;
 			buildPhases = (
+				507AA5A4E4BD338C7666192A /* [CP] Check Pods Manifest.lock */,
 				189DE37326A3C85900358C7B /* Sources */,
 				189DE37426A3C85900358C7B /* Frameworks */,
 				189DE37526A3C85900358C7B /* Resources */,
-				18747CDC26A9CCDD00B1F81C /* ShellScript */,
 				18747CDF26A9CD3600B1F81C /* Embed Frameworks */,
+				665E2418C32B55F515A54CB2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,24 +202,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		18747CDC26A9CCDD00B1F81C /* ShellScript */ = {
+		507AA5A4E4BD338C7666192A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"",
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SquarePointOfSaleSDK.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Food Cash Register-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		665E2418C32B55F515A54CB2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -358,6 +393,7 @@
 		};
 		189DE38C26A3C85C00358C7B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A102573CA5ACC9ADF47D8BCF /* Pods-Food Cash Register.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -379,6 +415,7 @@
 		};
 		189DE38D26A3C85C00358C7B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 791EEC69BECF8DA480F5E6E9 /* Pods-Food Cash Register.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

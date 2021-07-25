@@ -6,33 +6,40 @@
 //
 
 import Foundation
+import SquarePointOfSaleSDK
 
-// Replace with your app's callback URL as set in the
-// Square ApplicationDashboard [https://connect.squareup.com/apps]
-// You must also declare this URL scheme in YOUR_PROJECT.plist,
-// under URL types.
-let yourCallbackURL = URL(string: "hellocharge://callback")!
-
-
-// Specify the amount of money to charge.
-var amount: SCCMoney?
-do {
-    amount = try SCCMoney(amountCents: 100, currencyCode: "USD")
-} catch {}
+// Replace with your app's URL scheme.
 
 // Your client ID is the same as your Square Application ID.
 // Note: You only need to set your client ID once, before creating your first request.
-SCCAPIRequest.clientID = YOUR_CLIENT_ID
 
-var request: SCCAPIRequest?
-do {
-    request = try SCCAPIRequest(callbackURL: callbackURL,
-                                amount: amount,
-                                userInfoString: nil,
-                                merchantID: nil,
-                                notes: "Coffee",
-                                customerID: nil,
-                                supportedTenderTypes: SCCAPIRequestTenderTypeAll,
-                                clearsDefaultFees: false,
-                                returnAutomaticallyAfterPayment: false)
-} catch {}
+func payBySquare(price:Int,note:String){
+    SCCAPIRequest.setApplicationID(applicationID)
+    
+    do {
+        // Specify the amount of money to charge.
+        let money = try SCCMoney(amountCents: price, currencyCode: "JPY")
+
+        // Create the request.
+        let apiRequest =
+            try SCCAPIRequest(
+                    callbackURL: callbackURL,
+                    amount: money,
+                    userInfoString: nil,
+                    locationID: nil,
+                    notes: note,
+                    customerID: nil,
+                    supportedTenderTypes: .all,
+                    clearsDefaultFees: false,
+                    returnsAutomaticallyAfterPayment: true,
+                    disablesKeyedInCardEntry: false,
+                    skipsReceipt: true
+            )
+
+        // Open Point of Sale to complete the payment.
+        try SCCAPIConnection.perform(apiRequest)
+
+    } catch let error as NSError {
+        print(error.localizedDescription)
+    }
+}
