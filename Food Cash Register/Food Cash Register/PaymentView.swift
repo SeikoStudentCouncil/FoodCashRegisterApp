@@ -45,7 +45,7 @@ struct PaymentView: View {
                 .padding(.leading)
                 Spacer()
                 Button(action: {
-                    payBySquare(price: price, note: "聖光祭 \(stores[settings.store])",method: .cash)
+                    payBySquare(price: price, store: stores[settings.store],method: .cash)
                 }){
                     ZStack {
                         RoundedRectangle(cornerRadius: 15)
@@ -62,7 +62,7 @@ struct PaymentView: View {
                 }
                     .accentColor(.primary)
                 Button(action: {
-                        payBySquare(price: totalPrice(), note: "聖光祭 \(stores[settings.store])",method: .card)
+                        payBySquare(price: totalPrice(), store: stores[settings.store],method: .card)
                     }){
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)
