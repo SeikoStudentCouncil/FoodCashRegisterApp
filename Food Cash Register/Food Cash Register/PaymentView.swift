@@ -9,11 +9,13 @@ import SwiftUI
 
 struct PaymentView: View {
     @ObservedObject var orders : FoodSelection
+    @EnvironmentObject private var settings : Settings
     @Binding var navigationActive : Bool
     @State private var sheetIsActive = false
     @State private var change: Int? =  nil
     
     var body: some View {
+        let price = totalPrice()
         VStack {
             List{
                 ForEach(orders.selected){ order in
@@ -33,33 +35,34 @@ struct PaymentView: View {
             Divider()
             HStack{
                 VStack(alignment:.trailing){
-                    Text("¥\(totalPrice())")
+                    Text("¥\(price)")
                     if let change = change{
                         Text("¥\(change)")
-                        Text("¥\(change - totalPrice())")
+                        Text("¥\(change - price)")
                     }
                 }
                 .font(.system(size: 30))
                 .padding(.leading)
                 Spacer()
-                Group {
-                    NavigationLink(destination: CashPaymentView(orders: orders)){
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15)
-                                .frame(width: 150, height: 100)
-                                .foregroundColor(Color(UIColor.systemGray5))
-                            VStack {
-                                Image(systemName: "banknote")
-                                    .font(.system(size: 60))
-                                Text("現金決済")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.primary)
-                            }
+                Button(action: {
+                    payBySquare(price: price, note: "聖光祭 \(stores[settings.store])",method: .cash)
+                }){
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 150, height: 100)
+                            .foregroundColor(Color(UIColor.systemGray5))
+                        VStack {
+                            Image(systemName: "banknote")
+                                .font(.system(size: 60))
+                            Text("現金決済")
+                                .font(.system(size: 20))
+                                .foregroundColor(.primary)
                         }
                     }
+                }
                     .accentColor(.primary)
-                    Button(action: {
-                        payBySquare(price: totalPrice(), note: "食品")
+                Button(action: {
+                        payBySquare(price: totalPrice(), note: "聖光祭 \(stores[settings.store])",method: .card)
                     }){
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)
@@ -74,10 +77,12 @@ struct PaymentView: View {
                             }
                             .foregroundColor(.accentColor)
                         }
-                    }
                 }
                 .padding([.vertical, .trailing])
             }
+        }
+        .onAppear{
+            
         }
         .navigationTitle("決済")
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SquarePointOfSaleSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        guard SCCAPIResponse.isSquareResponse(url) else {
+//            return false
+//        }
+
+        do {
+            let response = try SCCAPIResponse(responseURL: url)
+
+            if let error = response.error {
+                // Handle a failed request.
+                print("erroe")
+            } else {
+                // Handle a successful request.
+                print("sucess")
+            }
+
+        } catch let error as NSError {
+            // Handle unexpected errors.
+            print(error.localizedDescription)
+        }
+
+        return true
     }
 
 

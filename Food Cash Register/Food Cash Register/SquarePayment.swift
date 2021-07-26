@@ -8,12 +8,12 @@
 import Foundation
 import SquarePointOfSaleSDK
 
-// Replace with your app's URL scheme.
+enum PaymentMethod {
+    case cash
+    case card
+}
 
-// Your client ID is the same as your Square Application ID.
-// Note: You only need to set your client ID once, before creating your first request.
-
-func payBySquare(price:Int,note:String){
+func payBySquare(price:Int,note:String,method:PaymentMethod){
     SCCAPIRequest.setApplicationID(applicationID)
     
     do {
@@ -29,10 +29,10 @@ func payBySquare(price:Int,note:String){
                     locationID: nil,
                     notes: note,
                     customerID: nil,
-                    supportedTenderTypes: .all,
+                supportedTenderTypes: (method == .card ? .card : .cash),
                     clearsDefaultFees: false,
                     returnsAutomaticallyAfterPayment: true,
-                    disablesKeyedInCardEntry: false,
+                    disablesKeyedInCardEntry: true,
                     skipsReceipt: true
             )
 

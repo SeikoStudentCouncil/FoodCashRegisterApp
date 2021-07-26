@@ -29,7 +29,7 @@ class FoodSelection: ObservableObject {
 let data :[FoodDetail] = [FoodDetail(titile: "焼きそば", subtitle: "塩", price: 100),FoodDetail(titile: "焼きそば", subtitle: "ソース", price: 100)]
 
 struct FoodListView: View {
-    
+    @EnvironmentObject private var settings : Settings
     @StateObject private var orders = FoodSelection()
     @State private var navigationActive = false
     

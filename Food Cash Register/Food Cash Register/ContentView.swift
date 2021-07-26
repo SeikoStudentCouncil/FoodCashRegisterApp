@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView{
             NavigationView{
                 FoodListView()
+                    .toolbar{
+                        ToolbarItem(placement: .navigationBarLeading){
+                            NavigationLink(
+                                destination: SettingsView(),
+                                label: {
+                                    Label("設定",systemImage:"gear")
+                                })
+                        }
+                    }
             }
-                .tabItem { Label("レジ", systemImage:"bag") }
-            NavigationView{
-                SettingsView()
-            }
-                .tabItem { Label("設定", systemImage:"gear") }
-        }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }

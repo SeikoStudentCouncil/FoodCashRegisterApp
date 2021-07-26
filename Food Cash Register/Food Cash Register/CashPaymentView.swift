@@ -9,17 +9,16 @@ import SwiftUI
 
 struct CashPaymentView: View {
     @ObservedObject var orders : FoodSelection
+    @State var price : Int
     @State private var sheetIsActive = true
     @State private var paid: Int? =  nil
     
     var body: some View {
-        let total = totalPrice()
-        
         VStack {
             HStack {
                 Text("金額")
                 Spacer()
-                Text("¥\(total)")
+                Text("¥\(price)")
             }
             if let paid = paid{
                 HStack{
@@ -31,14 +30,14 @@ struct CashPaymentView: View {
                 HStack{
                     Text("お釣り")
                     Spacer()
-                    Text("¥\(paid-total)")
+                    Text("¥\(paid-price)")
                 }
             }
         }
         .frame(width:300)
         .font(.system(size: 30))
         .sheet(isPresented: $sheetIsActive){
-            SheetView(paid: $paid,price : total,isActive: $sheetIsActive)
+            SheetView(paid: $paid,price : price,isActive: $sheetIsActive)
         }
         .toolbar(content: {
             ToolbarItem(placement:.navigationBarTrailing){
@@ -51,14 +50,6 @@ struct CashPaymentView: View {
         .navigationTitle("現金決済")
         .navigationBarBackButtonHidden(true)
     }
-    func totalPrice() -> Int {
-        var price = 0
-        self.orders.selected.forEach{ food in
-            price += (food.count * food.food.price)
-        }
-        return price
-    }
-}
 
 private struct SheetView: View {
     @Binding var paid : Int?
@@ -96,9 +87,10 @@ private struct SheetView: View {
         }
     }
 }
+}
 
 struct CashPaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        CashPaymentView(orders: FoodSelection())
+        CashPaymentView(orders: FoodSelection(),price: 500)
     }
 }

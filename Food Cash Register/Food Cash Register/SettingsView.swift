@@ -16,11 +16,11 @@ class Settings :ObservableObject{
 }
 let stores = ["餃子","焼き鳥","ドリンク","フランクフルト","ポップコーン"]
 struct SettingsView: View {
-    @StateObject var settings = Settings()
+    @EnvironmentObject var settings : Settings
     
     var body: some View {
         Form{
-            Section(header:Text("店舗設定"),footer:Text("この店舗情報に基づいてメニューが変更されます。")){
+            Section(footer:Text("この店舗情報に基づいてメニューが変更されます。")){
                 HStack {
                     Text(stores[settings.store])
                     Spacer()
@@ -36,6 +36,7 @@ struct SettingsView: View {
                 })
             }
         }
+        .navigationTitle("店舗設定")
     }
 }
 
