@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CashPaymentView: View {
-    @ObservedObject var orders : FoodSelection
+    @ObservedObject var orders : OrderData
     @State var price : Int
     @State private var sheetIsActive = true
     @State private var paid: Int? =  nil
@@ -91,6 +91,6 @@ private struct SheetView: View {
 
 struct CashPaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        CashPaymentView(orders: FoodSelection(),price: 500)
+        CashPaymentView(orders: OrderData(),price: 500)
     }
 }

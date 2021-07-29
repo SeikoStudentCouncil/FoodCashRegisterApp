@@ -14,14 +14,19 @@ struct ContentView: View {
                 FoodListView()
                     .toolbar{
                         ToolbarItem(placement: .navigationBarLeading){
-                            Button(action: {
-                                showSettings.toggle()
-                            }, label: {
-                                Label("設定",systemImage:"gear")
+                            HStack {
+                                Button(action: {
+                                    showSettings.toggle()
+                                }, label: {
+                                    Label("設定",systemImage:"gear")
                             })
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarLeading){
                             NavigationLink(
-                                destination: SettingsView(),
+                                destination: OrderListView(),
                                 label: {
+                                    Label("オーダー", systemImage: "list.bullet")
                                 })
                         }
                     }
@@ -39,11 +44,14 @@ struct ContentView: View {
                         }
                     })
             }
+            .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(Settings())
+            .environmentObject(OrderData())
     }
 }

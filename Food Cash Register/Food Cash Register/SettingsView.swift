@@ -15,6 +15,7 @@ class Settings :ObservableObject{
     }
 }
 let stores = ["餃子","焼き鳥","ドリンク","フランクフルト","ポップコーン"]
+
 struct SettingsView: View {
     @EnvironmentObject var settings : Settings
     
@@ -25,8 +26,8 @@ struct SettingsView: View {
                     Text(stores[settings.store])
                     Spacer()
                     Picker(selection: $settings.store, label: Text("変更"), content: {
-                        ForEach((0..<stores.count), id: \.self){ index in
-                            Text(stores[index])
+                        ForEach((1...stores.count), id: \.self){ index in
+                            Text(stores[index-1])
                         }
                     })
                     .pickerStyle(MenuPickerStyle())

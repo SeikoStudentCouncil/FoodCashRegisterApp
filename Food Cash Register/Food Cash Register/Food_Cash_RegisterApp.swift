@@ -12,6 +12,7 @@ struct SwiftUI_LefecycleApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(Settings())
+                .environmentObject(OrderData())
         }
     }
 }

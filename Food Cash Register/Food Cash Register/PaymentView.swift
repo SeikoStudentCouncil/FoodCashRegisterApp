@@ -9,7 +9,7 @@ import SwiftUI
 import SquarePointOfSaleSDK
 
 struct PaymentView: View {
-    @ObservedObject var orders : FoodSelection
+    @ObservedObject var orders : OrderData
     @EnvironmentObject private var settings : Settings
     @Binding var navigationActive : Bool
     @State private var sheetIsActive = false
@@ -17,7 +17,6 @@ struct PaymentView: View {
     @State private var alert = false
     
     var body: some View {
-        let price = totalPrice()
         VStack {
             List{
                 ForEach(orders.selected){ order in
@@ -37,17 +36,17 @@ struct PaymentView: View {
             Divider()
             HStack{
                 VStack(alignment:.trailing){
-                    Text("¥\(price)")
+                    Text("¥\(totalPrice())")
                     if let change = change{
                         Text("¥\(change)")
-                        Text("¥\(change - price)")
+                        Text("¥\(change - totalPrice())")
                     }
                 }
                 .font(.system(size: 30))
                 .padding(.leading)
                 Spacer()
                 Button(action: {
-                    payBySquare(price: price, store: stores[settings.store],method: .cash)
+                    payBySquare(price: totalPrice(), store: stores[settings.store],method: .cash)
                 }){
                     ZStack {
                         RoundedRectangle(cornerRadius: 15)
@@ -103,7 +102,7 @@ struct PaymentView: View {
                             print(error.localizedDescription)
                         } else {
                            navigationActive = false
-//                            orders.selected = [FoodOrder]()
+                            orders.selected = [FoodOrder]()
                         }
             } catch{
             }
@@ -126,6 +125,6 @@ struct PaymentView: View {
 
 struct PaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentView(orders: FoodSelection(), navigationActive: .constant(true))
+        PaymentView(orders: OrderData(), navigationActive: .constant(true))
     }
 }

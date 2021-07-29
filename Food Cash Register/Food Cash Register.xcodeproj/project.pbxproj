@@ -19,6 +19,7 @@
 		189DE39326A42C4D00358C7B /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE39226A42C4D00358C7B /* FoodListView.swift */; };
 		189DE39726A4847C00358C7B /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE39626A4847C00358C7B /* PaymentView.swift */; };
 		18DA387526B2524A00DB8E3C /* Food_Cash_RegisterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */; };
+		18FE0F2826B30A48003D58D1 /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE0F2726B30A48003D58D1 /* OrderListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +49,7 @@
 		189DE39226A42C4D00358C7B /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
 		189DE39626A4847C00358C7B /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food_Cash_RegisterApp.swift; sourceTree = "<group>"; };
+		18FE0F2726B30A48003D58D1 /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		281BC7F1FF16E3789ED66DD8 /* Pods_Food_Cash_Register.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Cash_Register.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		791EEC69BECF8DA480F5E6E9 /* Pods-Food Cash Register.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Cash Register.release.xcconfig"; path = "Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register.release.xcconfig"; sourceTree = "<group>"; };
 		A102573CA5ACC9ADF47D8BCF /* Pods-Food Cash Register.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Cash Register.debug.xcconfig"; path = "Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */,
 				189DE37E26A3C85900358C7B /* ContentView.swift */,
 				189DE39226A42C4D00358C7B /* FoodListView.swift */,
+				18FE0F2726B30A48003D58D1 /* OrderListView.swift */,
 				189DE39626A4847C00358C7B /* PaymentView.swift */,
 				184F774B26A87F9B0070404A /* CashPaymentView.swift */,
 				1870E30F26A56B1F00B9E70E /* NumberPadView.swift */,
@@ -245,6 +248,7 @@
 				189DE39726A4847C00358C7B /* PaymentView.swift in Sources */,
 				189DE37F26A3C85900358C7B /* ContentView.swift in Sources */,
 				18591AD526A6A02B00C9A74E /* Private.swift in Sources */,
+				18FE0F2826B30A48003D58D1 /* OrderListView.swift in Sources */,
 				184F774C26A87F9B0070404A /* CashPaymentView.swift in Sources */,
 				1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */,
 				18DA387526B2524A00DB8E3C /* Food_Cash_RegisterApp.swift in Sources */,
