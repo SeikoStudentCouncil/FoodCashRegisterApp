@@ -13,7 +13,7 @@ enum PaymentMethod {
     case card
 }
 
-func payBySquare(price:Int,note:String,method:PaymentMethod){
+func payBySquare(price:Int,store:String,method:PaymentMethod){
     SCCAPIRequest.setApplicationID(applicationID)
     
     do {
@@ -27,7 +27,7 @@ func payBySquare(price:Int,note:String,method:PaymentMethod){
                     amount: money,
                     userInfoString: nil,
                     locationID: nil,
-                    notes: note,
+                    notes: "聖光祭食品店舗 \(store)",
                     customerID: nil,
                 supportedTenderTypes: (method == .card ? .card : .cash),
                     clearsDefaultFees: false,
