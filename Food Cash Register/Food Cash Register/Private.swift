@@ -9,3 +9,4 @@ import Foundation
 
 let callbackURL = URL(string: "food-register-app://")!
 let applicationID = "sq0idp-qiwKd4g26Tpdlw5eY1QFdQ"
+let locationID = "LJRBXB2HKP93T"

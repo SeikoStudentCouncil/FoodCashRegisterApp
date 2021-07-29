@@ -25,21 +25,20 @@ struct ContentView: View {
                                 })
                         }
                     }
-            }
-            .sheet(isPresented: $showSettings, content: {
-                NavigationView {
-                    SettingsView()
-                        .toolbar(content: {
-                            ToolbarItem(placement: .navigationBarTrailing){
-                                Button(action: {showSettings.toggle()}, label: {
-                                    Text("完了")
+                    .sheet(isPresented: $showSettings, content: {
+                        NavigationView {
+                            SettingsView()
+                                .toolbar(content: {
+                                    ToolbarItem(placement: .navigationBarTrailing){
+                                        Button(action: {showSettings.toggle()}, label: {
+                                            Text("完了")
+                                        })
+                                    }
                                 })
-                            }
-                        })
-                        .navigationBarTitleDisplayMode(.inline)
-                }
-            })
-        .navigationViewStyle(StackNavigationViewStyle())
+                                .navigationBarTitleDisplayMode(.inline)
+                        }
+                    })
+            }
     }
 }
 

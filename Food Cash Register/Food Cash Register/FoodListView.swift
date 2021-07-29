@@ -41,7 +41,7 @@ struct FoodListView: View {
                     EmptyView()
                 })
             ScrollView{
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 300, maximum: 450),spacing: 30)]) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 200, maximum: 300),spacing: 30)]) {
                     ForEach(data){ each in
                         EachFoodView(data: each,orders: orders)
                     }

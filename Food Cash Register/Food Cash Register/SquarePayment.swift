@@ -26,7 +26,7 @@ func payBySquare(price:Int,store:String,method:PaymentMethod){
                     callbackURL: callbackURL,
                     amount: money,
                     userInfoString: nil,
-                    locationID: nil,
+                    locationID: locationID,
                     notes: "聖光祭食品店舗 \(store)",
                     customerID: nil,
                 supportedTenderTypes: (method == .card ? .card : .cash),
