@@ -34,27 +34,34 @@ struct FoodListView: View {
     @State private var navigationActive = false
     
     var body: some View {
-        ScrollView{
-            LazyHGrid(rows: [GridItem(.adaptive(minimum: 300, maximum: 450),spacing: 30)]) {
-                ForEach(data){ each in
-                    EachFoodView(data: each,orders: orders)
+        HStack {
+            NavigationLink(
+                destination: PaymentView(orders: orders,navigationActive: $navigationActive),isActive: $navigationActive,
+                label: {
+                    EmptyView()
+                })
+            ScrollView{
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 300, maximum: 450),spacing: 30)]) {
+                    ForEach(data){ each in
+                        EachFoodView(data: each,orders: orders)
+                    }
                 }
+                .padding(.all)
             }
-            .padding(.top)
-        }
-        .toolbar{
-            ToolbarItem(placement:.navigationBarTrailing){
-                if countTheNumberOfOrders() != 0{
-                    NavigationLink(
-                        destination: PaymentView(orders: orders,navigationActive: $navigationActive),isActive: $navigationActive,
-                        label: {
+            .toolbar{
+                ToolbarItem(placement:.navigationBarTrailing){
+                    if countTheNumberOfOrders() != 0{
+                        Button(action: {
+                            navigationActive.toggle()
+                        }, label: {
                             Text("決定")
                         })
+                    }
                 }
             }
+            .navigationTitle("レジ")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("レジ")
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     func countTheNumberOfOrders() -> Int {
@@ -72,9 +79,9 @@ struct EachFoodView: View {
     
     @State private var count = 0
     var body: some View{
-        VStack(alignment:.leading) {
+        VStack(alignment:.leading){
             Rectangle()
-                .frame(width: 250, height: 150)
+                    .frame(width: 250, height: 150)
             Text(data.titile)
                 .font(.system(.largeTitle))
             Text(data.subtitle)
@@ -94,9 +101,6 @@ struct EachFoodView: View {
                 }
                 print(orders.selected)
             })
-        }
-        .onAppear{
-            self.count = 0
         }
     }
 }

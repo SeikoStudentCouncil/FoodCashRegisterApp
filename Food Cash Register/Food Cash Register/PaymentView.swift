@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SquarePointOfSaleSDK
 
 struct PaymentView: View {
     @ObservedObject var orders : FoodSelection
@@ -13,6 +14,7 @@ struct PaymentView: View {
     @Binding var navigationActive : Bool
     @State private var sheetIsActive = false
     @State private var change: Int? =  nil
+    @State private var alert = false
     
     var body: some View {
         let price = totalPrice()
@@ -81,9 +83,34 @@ struct PaymentView: View {
                 .padding([.vertical, .trailing])
             }
         }
-        .onAppear{
-            
-        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarLeading){
+                Button(action: {
+                    navigationActive = false
+//                    orders.selected = [FoodOrder]()
+                }, label: {
+                    Label("やり直す",systemImage: "chevron.left")
+                })
+            }
+        })
+        .onOpenURL(perform: { url in
+            do {
+                let response = try SCCAPIResponse(responseURL: url)
+                
+                if let error = response.error {
+                            alert = true
+                            print(error.localizedDescription)
+                        } else {
+                           navigationActive = false
+//                            orders.selected = [FoodOrder]()
+                        }
+            } catch{
+            }
+        })
+        .alert(isPresented: $alert, content: {
+            Alert(title: Text("決済失敗"), message: Text("もう一度お試しください"))
+        })
         .navigationTitle("決済")
     }
     

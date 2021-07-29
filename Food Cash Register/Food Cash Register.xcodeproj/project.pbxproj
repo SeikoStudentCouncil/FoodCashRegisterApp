@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,15 +12,13 @@
 		18591AD526A6A02B00C9A74E /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18591AD426A6A02B00C9A74E /* Private.swift */; };
 		1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870E30F26A56B1F00B9E70E /* NumberPadView.swift */; };
 		1883BED926A5D4CC0068579A /* SquarePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883BED826A5D4CC0068579A /* SquarePayment.swift */; };
-		189DE37B26A3C85900358C7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE37A26A3C85900358C7B /* AppDelegate.swift */; };
-		189DE37D26A3C85900358C7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE37C26A3C85900358C7B /* SceneDelegate.swift */; };
 		189DE37F26A3C85900358C7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE37E26A3C85900358C7B /* ContentView.swift */; };
 		189DE38126A3C85C00358C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 189DE38026A3C85C00358C7B /* Assets.xcassets */; };
 		189DE38426A3C85C00358C7B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 189DE38326A3C85C00358C7B /* Preview Assets.xcassets */; };
-		189DE38726A3C85C00358C7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189DE38526A3C85C00358C7B /* LaunchScreen.storyboard */; };
 		189DE38F26A3C95500358C7B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE38E26A3C95500358C7B /* SettingsView.swift */; };
 		189DE39326A42C4D00358C7B /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE39226A42C4D00358C7B /* FoodListView.swift */; };
 		189DE39726A4847C00358C7B /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE39626A4847C00358C7B /* PaymentView.swift */; };
+		18DA387526B2524A00DB8E3C /* Food_Cash_RegisterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,16 +40,14 @@
 		1870E30F26A56B1F00B9E70E /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
 		1883BED826A5D4CC0068579A /* SquarePayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarePayment.swift; sourceTree = "<group>"; };
 		189DE37726A3C85900358C7B /* Food Cash Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Cash Register.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		189DE37A26A3C85900358C7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		189DE37C26A3C85900358C7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		189DE37E26A3C85900358C7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		189DE38026A3C85C00358C7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		189DE38326A3C85C00358C7B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		189DE38626A3C85C00358C7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		189DE38826A3C85C00358C7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		189DE38E26A3C95500358C7B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		189DE39226A42C4D00358C7B /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
 		189DE39626A4847C00358C7B /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food_Cash_RegisterApp.swift; sourceTree = "<group>"; };
 		281BC7F1FF16E3789ED66DD8 /* Pods_Food_Cash_Register.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Cash_Register.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		791EEC69BECF8DA480F5E6E9 /* Pods-Food Cash Register.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Cash Register.release.xcconfig"; path = "Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register.release.xcconfig"; sourceTree = "<group>"; };
 		A102573CA5ACC9ADF47D8BCF /* Pods-Food Cash Register.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Cash Register.debug.xcconfig"; path = "Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,8 +94,7 @@
 		189DE37926A3C85900358C7B /* Food Cash Register */ = {
 			isa = PBXGroup;
 			children = (
-				189DE37A26A3C85900358C7B /* AppDelegate.swift */,
-				189DE37C26A3C85900358C7B /* SceneDelegate.swift */,
+				18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */,
 				189DE37E26A3C85900358C7B /* ContentView.swift */,
 				189DE39226A42C4D00358C7B /* FoodListView.swift */,
 				189DE39626A4847C00358C7B /* PaymentView.swift */,
@@ -109,7 +104,6 @@
 				1883BED826A5D4CC0068579A /* SquarePayment.swift */,
 				18591AD426A6A02B00C9A74E /* Private.swift */,
 				189DE38026A3C85C00358C7B /* Assets.xcassets */,
-				189DE38526A3C85C00358C7B /* LaunchScreen.storyboard */,
 				189DE38826A3C85C00358C7B /* Info.plist */,
 				189DE38226A3C85C00358C7B /* Preview Content */,
 			);
@@ -176,7 +170,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 189DE36E26A3C85900358C7B;
 			productRefGroup = 189DE37826A3C85900358C7B /* Products */;
@@ -193,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				189DE38726A3C85C00358C7B /* LaunchScreen.storyboard in Resources */,
 				189DE38426A3C85C00358C7B /* Preview Assets.xcassets in Resources */,
 				189DE38126A3C85C00358C7B /* Assets.xcassets in Resources */,
 			);
@@ -249,36 +241,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				189DE39326A42C4D00358C7B /* FoodListView.swift in Sources */,
-				189DE37B26A3C85900358C7B /* AppDelegate.swift in Sources */,
 				189DE38F26A3C95500358C7B /* SettingsView.swift in Sources */,
 				189DE39726A4847C00358C7B /* PaymentView.swift in Sources */,
-				189DE37D26A3C85900358C7B /* SceneDelegate.swift in Sources */,
 				189DE37F26A3C85900358C7B /* ContentView.swift in Sources */,
 				18591AD526A6A02B00C9A74E /* Private.swift in Sources */,
 				184F774C26A87F9B0070404A /* CashPaymentView.swift in Sources */,
 				1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */,
+				18DA387526B2524A00DB8E3C /* Food_Cash_RegisterApp.swift in Sources */,
 				1883BED926A5D4CC0068579A /* SquarePayment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		189DE38526A3C85C00358C7B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				189DE38626A3C85C00358C7B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		189DE38926A3C85C00358C7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -340,6 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
