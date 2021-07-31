@@ -14,7 +14,7 @@ class Settings :ObservableObject{
         UserDefaults.standard.set(store, forKey: "StoreSetting")
     }
 }
-let stores = ["餃子","焼き鳥","ドリンク","フランクフルト","ポップコーン"]
+let stores = ["餃子","焼き鳥","ドリンク","フランクフルト","ポップコーン","駅弁","SESFA","宇宙食","ご当地研究会"]
 
 struct SettingsView: View {
     @EnvironmentObject var settings : Settings
