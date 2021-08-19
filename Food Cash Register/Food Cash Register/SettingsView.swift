@@ -26,8 +26,8 @@ struct SettingsView: View {
                     Text(stores[settings.store])
                     Spacer()
                     Picker(selection: $settings.store, label: Text("変更"), content: {
-                        ForEach((1...stores.count), id: \.self){ index in
-                            Text(stores[index-1])
+                        ForEach((0..<stores.count), id: \.self){ index in
+                            Text(stores[index])
                         }
                     })
                     .pickerStyle(MenuPickerStyle())
