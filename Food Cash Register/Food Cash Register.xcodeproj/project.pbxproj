@@ -10,6 +10,9 @@
 		0074A7C2CA7AD018B41BCBA6 /* Pods_Food_Cash_Register.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281BC7F1FF16E3789ED66DD8 /* Pods_Food_Cash_Register.framework */; };
 		184F774C26A87F9B0070404A /* CashPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F774B26A87F9B0070404A /* CashPaymentView.swift */; };
 		18591AD526A6A02B00C9A74E /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18591AD426A6A02B00C9A74E /* Private.swift */; };
+		1867534226D5E5F4001996C5 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867534126D5E5F4001996C5 /* OrderDetailView.swift */; };
+		1867534426D5FB3F001996C5 /* menu.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1867534326D5FB3F001996C5 /* menu.csv */; };
+		1867534626D5FFA7001996C5 /* FoodDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867534526D5FFA7001996C5 /* FoodDataManager.swift */; };
 		1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870E30F26A56B1F00B9E70E /* NumberPadView.swift */; };
 		1883BED926A5D4CC0068579A /* SquarePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883BED826A5D4CC0068579A /* SquarePayment.swift */; };
 		189DE37F26A3C85900358C7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE37E26A3C85900358C7B /* ContentView.swift */; };
@@ -38,6 +41,9 @@
 /* Begin PBXFileReference section */
 		184F774B26A87F9B0070404A /* CashPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashPaymentView.swift; sourceTree = "<group>"; };
 		18591AD426A6A02B00C9A74E /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
+		1867534126D5E5F4001996C5 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
+		1867534326D5FB3F001996C5 /* menu.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = menu.csv; sourceTree = "<group>"; };
+		1867534526D5FFA7001996C5 /* FoodDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataManager.swift; sourceTree = "<group>"; };
 		1870E30F26A56B1F00B9E70E /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
 		1883BED826A5D4CC0068579A /* SquarePayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarePayment.swift; sourceTree = "<group>"; };
 		189DE37726A3C85900358C7B /* Food Cash Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Cash Register.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,14 +106,17 @@
 				189DE37E26A3C85900358C7B /* ContentView.swift */,
 				189DE39226A42C4D00358C7B /* FoodListView.swift */,
 				18FE0F2726B30A48003D58D1 /* OrderListView.swift */,
+				1867534126D5E5F4001996C5 /* OrderDetailView.swift */,
 				189DE39626A4847C00358C7B /* PaymentView.swift */,
 				184F774B26A87F9B0070404A /* CashPaymentView.swift */,
 				1870E30F26A56B1F00B9E70E /* NumberPadView.swift */,
 				189DE38E26A3C95500358C7B /* SettingsView.swift */,
+				1867534526D5FFA7001996C5 /* FoodDataManager.swift */,
 				1883BED826A5D4CC0068579A /* SquarePayment.swift */,
 				18591AD426A6A02B00C9A74E /* Private.swift */,
 				189DE38026A3C85C00358C7B /* Assets.xcassets */,
 				189DE38826A3C85C00358C7B /* Info.plist */,
+				1867534326D5FB3F001996C5 /* menu.csv */,
 				189DE38226A3C85C00358C7B /* Preview Content */,
 			);
 			path = "Food Cash Register";
@@ -191,6 +200,7 @@
 			files = (
 				189DE38426A3C85C00358C7B /* Preview Assets.xcassets in Resources */,
 				189DE38126A3C85C00358C7B /* Assets.xcassets in Resources */,
+				1867534426D5FB3F001996C5 /* menu.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,9 +258,11 @@
 				189DE39726A4847C00358C7B /* PaymentView.swift in Sources */,
 				189DE37F26A3C85900358C7B /* ContentView.swift in Sources */,
 				18591AD526A6A02B00C9A74E /* Private.swift in Sources */,
+				1867534626D5FFA7001996C5 /* FoodDataManager.swift in Sources */,
 				18FE0F2826B30A48003D58D1 /* OrderListView.swift in Sources */,
 				184F774C26A87F9B0070404A /* CashPaymentView.swift in Sources */,
 				1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */,
+				1867534226D5E5F4001996C5 /* OrderDetailView.swift in Sources */,
 				18DA387526B2524A00DB8E3C /* Food_Cash_RegisterApp.swift in Sources */,
 				1883BED926A5D4CC0068579A /* SquarePayment.swift in Sources */,
 			);

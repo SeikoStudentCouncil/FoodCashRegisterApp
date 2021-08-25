@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct FoodDetail :Identifiable{
-    let id = UUID()
+    let id :String
     
     let store : Int
-    let image : String
     let titile: String
     let subtitle: String
     let price: Int
@@ -20,7 +19,7 @@ struct FoodDetail :Identifiable{
 struct FoodOrder :Identifiable{
     let id = UUID()
     
-    let food: FoodDetail
+    let food: String
     var count: Int
 }
 
@@ -32,10 +31,9 @@ struct OrderSet :Identifiable{
 
 class OrderData: ObservableObject {
     @Published var selected = [FoodOrder]()
-    @Published var paid = [OrderSet(food: [FoodOrder(food: data[0], count: 4),FoodOrder(food: data[1], count: 2)])]
+    @Published var paid = [OrderSet(food: [FoodOrder(food: menuDataBase()[0].id, count: 4),FoodOrder(food: menuDataBase()[1].id, count: 2)])]
 }
 
-let data :[FoodDetail] = [FoodDetail(store: 1, image: "sample", titile: "焼きそば", subtitle: "塩", price: 100),FoodDetail(store: 2,image: "sample", titile: "焼きそば", subtitle: "ソース", price: 100)]
 
 struct FoodListView: View {
     @EnvironmentObject private var settings : Settings
@@ -51,8 +49,9 @@ struct FoodListView: View {
                 })
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum:300, maximum: 400),spacing: 20)]) {
-                    ForEach(data.filter{ $0.store == settings.store}){ each in
+                    ForEach(menuDataBase().filter{ $0.store == settings.store}){ each in
                         EachFoodView(data: each,orders: orders)
+                            .frame(width: 300, height: 300)
                             .padding(.all)
                     }
                 }
@@ -68,7 +67,7 @@ struct FoodListView: View {
                     }
                 }
             }
-            .navigationTitle("レジ")
+            .navigationTitle("商品一覧")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -92,29 +91,34 @@ private struct EachFoodView: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(lineWidth: 1)
             VStack(alignment:.leading){
-                Image(data.image)
+                Image("1")
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                 Text(data.titile)
-                    .font(.system(.largeTitle))
-                Text(data.subtitle)
-                    .font(.system(.subheadline))
+                    .font(.title)
+                    .lineLimit(data.subtitle.isEmpty ? 2 :1)
+                if !data.subtitle.isEmpty{
+                    Text(data.subtitle)
+                        .font(.title2)
+                }
+                Spacer()
                 Stepper(value: $count, in: 0...20) {
                     Text(count != 0 ? "\(count)個" : "なし")
                 }
                 .onChange(of: count, perform: { value in
-                    if let index = orders.selected.firstIndex(where: { $0.food.id == data.id }){
+                    if let index = orders.selected.firstIndex(where: { $0.food == data.id }){
                         if value == 0 {
                             orders.selected.remove(at: index)
                         } else{
                             orders.selected[index].count = value
                         }
                     } else{
-                        orders.selected.append(FoodOrder(food: data, count: value))
+                        orders.selected.append(FoodOrder(food: data.id, count: value))
                     }
                     print(orders.selected)
                 })
             }
+//            .frame(width: 300, height: 300)
             .padding(10)
         }
     }

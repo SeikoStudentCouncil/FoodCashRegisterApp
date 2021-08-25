@@ -20,15 +20,16 @@ struct PaymentView: View {
         VStack {
             List{
                 ForEach(orders.selected){ order in
+                    let orderData = search(order.food)
                     VStack(alignment:.leading) {
                         HStack{
-                            Text("\(order.food.titile) \(order.food.subtitle)")
+                            Text("\(orderData.titile) \(orderData.subtitle)")
                                 .font(.title)
                             Spacer()
-                            Text("\(order.food.price * order.count)円")
+                            Text("\(orderData.price * order.count)円")
                                 .font(.title3)
                         }
-                        Text("数量 \(order.count)個 | 商品価格 \(order.food.price)円")
+                        Text("数量 \(order.count)個 | 商品価格 \(orderData.price)円")
                             .foregroundColor(.secondary)
                     }
                 }
@@ -63,7 +64,7 @@ struct PaymentView: View {
                 }
                     .accentColor(.primary)
                 Button(action: {
-                        payBySquare(price: totalPrice(), store: stores[settings.store],method: .card)
+                    payBySquare(price: 0, store: stores[settings.store],method: .card)
                     }){
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)
@@ -112,13 +113,12 @@ struct PaymentView: View {
         })
         .navigationTitle("決済")
     }
-    
     func totalPrice() -> Int {
-        var price = 0
-        self.orders.selected.forEach{ food in
-            price += (food.count * food.food.price)
+        var content = Int()
+        orders.selected.forEach{ each in
+            content += (search(each.food).price*each.count)
         }
-        return price
+        return content
     }
 }
 

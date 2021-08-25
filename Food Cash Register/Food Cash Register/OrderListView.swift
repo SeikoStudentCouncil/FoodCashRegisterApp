@@ -13,7 +13,11 @@ struct OrderListView: View {
     var body: some View {
         List{
             ForEach(data.paid){ each in
-                Text("Hello, World!")
+                NavigationLink(
+                    destination: EmptyView(),
+                    label: {
+                        Text("\(each.food.count)個のアイテム")
+                    })
             }
         }
         .toolbar(content: {
@@ -35,7 +39,10 @@ struct OrderListView: View {
 
 struct OrderListView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderListView()
-            .environmentObject(OrderData())
+        NavigationView {
+            OrderListView()
+        }
+        .environmentObject(OrderData())
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
