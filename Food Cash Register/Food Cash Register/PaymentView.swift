@@ -63,25 +63,27 @@ struct PaymentView: View {
                     }
                 }
                     .accentColor(.primary)
-                Button(action: {
-                    payBySquare(price: 0, store: stores[settings.store],method: .card)
-                    }){
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15)
-                                .frame(width: 150, height: 100)
-                                .foregroundColor(Color(UIColor.systemGray5))
-                            VStack {
-                                Image(systemName: "creditcard")
-                                    .font(.system(size: 60))
-                                Text("電子決済")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.primary)
+                if totalPrice() >= 100{
+                    Button(action: {
+                        payBySquare(price: totalPrice(), store: stores[settings.store],method: .card)
+                        }){
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .frame(width: 150, height: 100)
+                                    .foregroundColor(Color(UIColor.systemGray5))
+                                VStack {
+                                    Image(systemName: "creditcard")
+                                        .font(.system(size: 60))
+                                    Text("電子決済")
+                                        .font(.system(size: 20))
+                                        .foregroundColor(.primary)
+                                }
+                                .foregroundColor(.accentColor)
                             }
-                            .foregroundColor(.accentColor)
-                        }
+                    }
                 }
-                .padding([.vertical, .trailing])
             }
+            .padding([.vertical, .trailing])
         }
         .navigationBarBackButtonHidden(true)
         .toolbar(content: {
