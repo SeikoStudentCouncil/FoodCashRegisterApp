@@ -91,9 +91,14 @@ private struct EachFoodView: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(lineWidth: 1)
             VStack(alignment:.leading){
-                Image("1")
-                    .resizable()
-                    .scaledToFit()
+                HStack {
+                    Spacer()
+                    Image(data.id)
+                        .resizable()
+                        .scaledToFit()
+                    Spacer()
+                }
+                Spacer()
                 Text(data.titile)
                     .font(.title)
                     .lineLimit(data.subtitle.isEmpty ? 2 :1)
@@ -101,7 +106,6 @@ private struct EachFoodView: View {
                     Text(data.subtitle)
                         .font(.title2)
                 }
-                Spacer()
                 Stepper(value: $count, in: 0...20) {
                     Text(count != 0 ? "\(count)個" : "なし")
                 }

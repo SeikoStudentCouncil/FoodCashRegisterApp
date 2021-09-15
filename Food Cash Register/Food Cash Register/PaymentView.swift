@@ -86,16 +86,6 @@ struct PaymentView: View {
             .padding([.vertical, .trailing])
         }
         .navigationBarBackButtonHidden(true)
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarLeading){
-                Button(action: {
-                    navigationActive = false
-//                    orders.selected = [FoodOrder]()
-                }, label: {
-                    Label("やり直す",systemImage: "chevron.left")
-                })
-            }
-        })
         .onOpenURL(perform: { url in
             do {
                 let response = try SCCAPIResponse(responseURL: url)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showSettings = false
+    @State private var showHistory = false
     var body: some View {
             NavigationView{
                 FoodListView()
@@ -23,19 +24,34 @@ struct ContentView: View {
                             }
                         }
                         ToolbarItem(placement: .navigationBarLeading){
-                            NavigationLink(
-                                destination: OrderListView(),
-                                label: {
-                                    Label("オーダー", systemImage: "list.bullet")
-                                })
+                            HStack {
+                                Button(action: {
+                                    showHistory.toggle()
+                                }, label: {
+                                    Label("履歴",systemImage:"")
+                            })
+                            }
                         }
                     }
                     .sheet(isPresented: $showSettings, content: {
                         NavigationView {
                             SettingsView()
                                 .toolbar(content: {
-                                    ToolbarItem(placement: .navigationBarTrailing){
+                                    ToolbarItem(placement: .confirmationAction){
                                         Button(action: {showSettings.toggle()}, label: {
+                                            Text("完了")
+                                        })
+                                    }
+                                })
+                                .navigationBarTitleDisplayMode(.inline)
+                        }
+                    })
+                    .sheet(isPresented: $showHistory, content: {
+                        NavigationView {
+                            SettingsView()
+                                .toolbar(content: {
+                                    ToolbarItem(placement: .confirmationAction){
+                                        Button(action: {showHistory.toggle()}, label: {
                                             Text("完了")
                                         })
                                     }
