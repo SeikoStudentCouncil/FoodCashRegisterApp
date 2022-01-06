@@ -15,7 +15,7 @@ func menuDataBase() -> [FoodDetail] {
         csvData.components(separatedBy: .newlines).forEach{ each in
             if !each.isEmpty{
                 let data = each.components(separatedBy: ",")
-                content.append(FoodDetail(id: data[0], store: stores.firstIndex(of: data[1])!, titile: data[2], subtitle: data[3], price: Int(data[4])!))
+                content.append(FoodDetail(id: data[4], store: data[0], titile: data[1], subtitle: data[2], price: Int(data[3])!))
             }
         }
         return content
@@ -23,6 +23,28 @@ func menuDataBase() -> [FoodDetail] {
         print("エラー")
         return content
     }
+}
+
+func getStoreOptions() -> [String]{
+    var content = [String]()
+    let path = Bundle.main.path(forResource:"menu", ofType:"csv")!
+    do{
+        let csvData = try String(contentsOfFile: path,encoding:String.Encoding.utf8)
+        csvData.components(separatedBy: .newlines).forEach{ each in
+            if !each.isEmpty{
+                let data = each.components(separatedBy: ",")
+                content.append(data[0])
+            }
+        }
+    } catch {
+        print("エラー")
+    }
+    return unique(content)
+}
+
+func unique(_ array: [String]) -> [String]{
+    let orderedSet:NSOrderedSet = NSOrderedSet(array: array)
+    return orderedSet.array as! [String]
 }
 
 func search(_ id: String) ->  FoodDetail{

@@ -9,9 +9,8 @@ import SwiftUI
 import SquarePointOfSaleSDK
 
 struct PaymentView: View {
-    @ObservedObject var orders : OrderData
+    @Binding var orders : [FoodOrder]
     @EnvironmentObject private var settings : Settings
-    @Binding var navigationActive : Bool
     @State private var sheetIsActive = false
     @State private var change: Int? =  nil
     @State private var alert = false
@@ -19,12 +18,12 @@ struct PaymentView: View {
     var body: some View {
         VStack {
             List{
-                ForEach(orders.selected){ order in
+                ForEach(orders){ order in
                     let orderData = search(order.food)
                     VStack(alignment:.leading) {
                         HStack{
                             Text("\(orderData.titile) \(orderData.subtitle)")
-                                .font(.title)
+                                .font(.title2)
                             Spacer()
                             Text("\(orderData.price * order.count)円")
                                 .font(.title3)
@@ -34,54 +33,60 @@ struct PaymentView: View {
                     }
                 }
             }
-            Divider()
-            HStack{
-                VStack(alignment:.trailing){
-                    Text("¥\(totalPrice())")
-                    if let change = change{
-                        Text("¥\(change)")
-                        Text("¥\(change - totalPrice())")
-                    }
-                }
-                .font(.system(size: 30))
-                .padding(.leading)
-                Spacer()
-                Button(action: {
-                    payBySquare(price: totalPrice(), store: stores[settings.store],method: .cash)
-                }){
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 150, height: 100)
-                            .foregroundColor(Color(UIColor.systemGray5))
-                        VStack {
-                            Image(systemName: "banknote")
-                                .font(.system(size: 60))
-                            Text("現金決済")
-                                .font(.system(size: 20))
-                                .foregroundColor(.primary)
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .foregroundColor(Color(UIColor.systemBackground))
+                    .frame(height: 130)
+                HStack{
+                    VStack(alignment:.trailing){
+                        Text("¥\(totalPrice())")
+                        if let change = change{
+                            Text("¥\(change)")
+                            Text("¥\(change - totalPrice())")
                         }
                     }
-                }
-                    .accentColor(.primary)
-                if totalPrice() >= 100{
+                    .font(.system(size: 30))
+                    .padding(.leading)
+                    Spacer()
                     Button(action: {
-                        payBySquare(price: totalPrice(), store: stores[settings.store],method: .card)
-                        }){
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .frame(width: 150, height: 100)
-                                    .foregroundColor(Color(UIColor.systemGray5))
-                                VStack {
-                                    Image(systemName: "creditcard")
-                                        .font(.system(size: 60))
-                                    Text("電子決済")
-                                        .font(.system(size: 20))
-                                        .foregroundColor(.primary)
-                                }
-                                .foregroundColor(.accentColor)
+                        payBySquare(price: totalPrice(), store: settings.store,method: .cash)
+                    }){
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width: 150, height: 100)
+                                .foregroundColor(Color(UIColor.secondarySystemBackground))
+                            VStack {
+                                Image(systemName: "banknote")
+                                    .font(.system(size: 60))
+                                Text("現金決済")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.primary)
                             }
+                        }
+                    }
+                        .accentColor(.primary)
+                    if totalPrice() >= 100{
+                        Button(action: {
+                            payBySquare(price: totalPrice(), store: settings.store,method: .card)
+                            }){
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .frame(width: 150, height: 100)
+                                        .foregroundColor(Color(UIColor.secondarySystemBackground))
+                                    VStack {
+                                        Image(systemName: "creditcard")
+                                            .font(.system(size: 60))
+                                        Text("電子決済")
+                                            .font(.system(size: 20))
+                                            .foregroundColor(.primary)
+                                    }
+                                    .foregroundColor(.accentColor)
+                                }
+                            }
+                            .padding(.leading,10)
                     }
                 }
+                .padding(.trailing,15)
             }
             .padding([.vertical, .trailing])
         }
@@ -94,8 +99,7 @@ struct PaymentView: View {
                             alert = true
                             print(error.localizedDescription)
                         } else {
-                           navigationActive = false
-                            orders.selected = [FoodOrder]()
+                            orders = [FoodOrder]()
                         }
             } catch{
             }
@@ -107,7 +111,7 @@ struct PaymentView: View {
     }
     func totalPrice() -> Int {
         var content = Int()
-        orders.selected.forEach{ each in
+        orders.forEach{ each in
             content += (search(each.food).price*each.count)
         }
         return content
@@ -117,6 +121,6 @@ struct PaymentView: View {
 
 struct PaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentView(orders: OrderData(), navigationActive: .constant(true))
+        PaymentView(orders: .constant([FoodOrder(food: "hogehoge", count: 3)]))
     }
 }

@@ -3,16 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0074A7C2CA7AD018B41BCBA6 /* Pods_Food_Cash_Register.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281BC7F1FF16E3789ED66DD8 /* Pods_Food_Cash_Register.framework */; };
-		184F774C26A87F9B0070404A /* CashPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F774B26A87F9B0070404A /* CashPaymentView.swift */; };
 		18591AD526A6A02B00C9A74E /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18591AD426A6A02B00C9A74E /* Private.swift */; };
-		1867534226D5E5F4001996C5 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867534126D5E5F4001996C5 /* OrderDetailView.swift */; };
 		1867534426D5FB3F001996C5 /* menu.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1867534326D5FB3F001996C5 /* menu.csv */; };
 		1867534626D5FFA7001996C5 /* FoodDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867534526D5FFA7001996C5 /* FoodDataManager.swift */; };
+		186D4B7D2772FE9100A0FA92 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D4B7C2772FE9100A0FA92 /* ScanView.swift */; };
 		1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870E30F26A56B1F00B9E70E /* NumberPadView.swift */; };
 		1883BED926A5D4CC0068579A /* SquarePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883BED826A5D4CC0068579A /* SquarePayment.swift */; };
 		189DE37F26A3C85900358C7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE37E26A3C85900358C7B /* ContentView.swift */; };
@@ -21,8 +20,8 @@
 		189DE38F26A3C95500358C7B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE38E26A3C95500358C7B /* SettingsView.swift */; };
 		189DE39326A42C4D00358C7B /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE39226A42C4D00358C7B /* FoodListView.swift */; };
 		189DE39726A4847C00358C7B /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DE39626A4847C00358C7B /* PaymentView.swift */; };
+		18AA3BA82784A6290060970C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 18AA3BA72784A6290060970C /* CodeScanner */; };
 		18DA387526B2524A00DB8E3C /* Food_Cash_RegisterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */; };
-		18FE0F2826B30A48003D58D1 /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE0F2726B30A48003D58D1 /* OrderListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,11 +38,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		184F774B26A87F9B0070404A /* CashPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashPaymentView.swift; sourceTree = "<group>"; };
 		18591AD426A6A02B00C9A74E /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
-		1867534126D5E5F4001996C5 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
 		1867534326D5FB3F001996C5 /* menu.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = menu.csv; sourceTree = "<group>"; };
 		1867534526D5FFA7001996C5 /* FoodDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataManager.swift; sourceTree = "<group>"; };
+		186D4B7C2772FE9100A0FA92 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		1870E30F26A56B1F00B9E70E /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
 		1883BED826A5D4CC0068579A /* SquarePayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarePayment.swift; sourceTree = "<group>"; };
 		189DE37726A3C85900358C7B /* Food Cash Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Cash Register.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +53,6 @@
 		189DE39226A42C4D00358C7B /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
 		189DE39626A4847C00358C7B /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food_Cash_RegisterApp.swift; sourceTree = "<group>"; };
-		18FE0F2726B30A48003D58D1 /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		281BC7F1FF16E3789ED66DD8 /* Pods_Food_Cash_Register.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_Cash_Register.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		791EEC69BECF8DA480F5E6E9 /* Pods-Food Cash Register.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Cash Register.release.xcconfig"; path = "Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register.release.xcconfig"; sourceTree = "<group>"; };
 		A102573CA5ACC9ADF47D8BCF /* Pods-Food Cash Register.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food Cash Register.debug.xcconfig"; path = "Target Support Files/Pods-Food Cash Register/Pods-Food Cash Register.debug.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AA3BA82784A6290060970C /* CodeScanner in Frameworks */,
 				0074A7C2CA7AD018B41BCBA6 /* Pods_Food_Cash_Register.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,10 +103,8 @@
 				18DA387426B2524A00DB8E3C /* Food_Cash_RegisterApp.swift */,
 				189DE37E26A3C85900358C7B /* ContentView.swift */,
 				189DE39226A42C4D00358C7B /* FoodListView.swift */,
-				18FE0F2726B30A48003D58D1 /* OrderListView.swift */,
-				1867534126D5E5F4001996C5 /* OrderDetailView.swift */,
+				186D4B7C2772FE9100A0FA92 /* ScanView.swift */,
 				189DE39626A4847C00358C7B /* PaymentView.swift */,
-				184F774B26A87F9B0070404A /* CashPaymentView.swift */,
 				1870E30F26A56B1F00B9E70E /* NumberPadView.swift */,
 				189DE38E26A3C95500358C7B /* SettingsView.swift */,
 				1867534526D5FFA7001996C5 /* FoodDataManager.swift */,
@@ -158,6 +154,9 @@
 			dependencies = (
 			);
 			name = "Food Cash Register";
+			packageProductDependencies = (
+				18AA3BA72784A6290060970C /* CodeScanner */,
+			);
 			productName = "Food Cash Register";
 			productReference = 189DE37726A3C85900358C7B /* Food Cash Register.app */;
 			productType = "com.apple.product-type.application";
@@ -184,6 +183,9 @@
 				en,
 			);
 			mainGroup = 189DE36E26A3C85900358C7B;
+			packageReferences = (
+				18AA3BA62784A6290060970C /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 189DE37826A3C85900358C7B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,10 +261,8 @@
 				189DE37F26A3C85900358C7B /* ContentView.swift in Sources */,
 				18591AD526A6A02B00C9A74E /* Private.swift in Sources */,
 				1867534626D5FFA7001996C5 /* FoodDataManager.swift in Sources */,
-				18FE0F2826B30A48003D58D1 /* OrderListView.swift in Sources */,
-				184F774C26A87F9B0070404A /* CashPaymentView.swift in Sources */,
+				186D4B7D2772FE9100A0FA92 /* ScanView.swift in Sources */,
 				1870E31026A56B1F00B9E70E /* NumberPadView.swift in Sources */,
-				1867534226D5E5F4001996C5 /* OrderDetailView.swift in Sources */,
 				18DA387526B2524A00DB8E3C /* Food_Cash_RegisterApp.swift in Sources */,
 				1883BED926A5D4CC0068579A /* SquarePayment.swift in Sources */,
 			);
@@ -400,6 +400,7 @@
 				DEVELOPMENT_TEAM = VK3A8K6V82;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Food Cash Register/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -422,6 +423,7 @@
 				DEVELOPMENT_TEAM = VK3A8K6V82;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Food Cash Register/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,6 +457,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18AA3BA62784A6290060970C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18AA3BA72784A6290060970C /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18AA3BA62784A6290060970C /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 189DE36F26A3C85900358C7B /* Project object */;
 }

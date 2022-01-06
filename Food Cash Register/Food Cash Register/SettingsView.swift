@@ -8,26 +8,34 @@
 import SwiftUI
 
 class Settings :ObservableObject{
-    @Published var store : Int = UserDefaults.standard.integer(forKey: "StoreSetting")
+    @Published var store : String
+    @Published var scan = true
+    @Published var stores : [String]
     
     func saveStoreSetting(){
         UserDefaults.standard.set(store, forKey: "StoreSetting")
     }
+    init(){
+        let storeOptions = getStoreOptions()
+        self.stores = storeOptions
+        if let storeSettings = UserDefaults.standard.string(forKey: "StoreSetting"){
+            self.store = storeSettings
+        } else {
+            self.store = storeOptions[0]
+        }
+    }
 }
-let stores = ["餃子","焼き鳥","ドリンク","フランクフルト","ポップコーン","駅弁","SESFA","宇宙食","ご当地研究会"]
 
 struct SettingsView: View {
     @EnvironmentObject var settings : Settings
     
     var body: some View {
         Form{
-            Section(footer:Text("この店舗情報に基づいてメニューが変更されます。")){
+            Section(header:Text("店舗"),footer:Text("この情報に基づいてメニューが変更されます")){
                 HStack {
-                    Text(stores[settings.store])
-                    Spacer()
                     Picker(selection: $settings.store, label: Text("変更"), content: {
-                        ForEach((0..<stores.count), id: \.self){ index in
-                            Text(stores[index])
+                        ForEach((0..<settings.stores.count), id: \.self){ index in
+                            Text(settings.stores[index])
                         }
                     })
                     .pickerStyle(MenuPickerStyle())
@@ -36,10 +44,17 @@ struct SettingsView: View {
                     settings.saveStoreSetting()
                 })
             }
+//            Section(header:Text("実験的機能")){
+//                Toggle(isOn: $settings.scan) {
+//                    Text("バーコードスキャン")
+//                }
+//            }
         }
-        .navigationTitle("店舗設定")
+        .navigationTitle("設定")
     }
 }
+
+
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
