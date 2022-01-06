@@ -85,6 +85,11 @@ private struct EachFoodView: View {
                 }
                 print(orders)
             })
+            .onChange(of: orders.first(where: {$0.food == data.id})?.count ?? -1, perform: {value in
+                if value != -1{
+                    count = value
+                }
+            })
         }
 //        .transition(.slide)
     }

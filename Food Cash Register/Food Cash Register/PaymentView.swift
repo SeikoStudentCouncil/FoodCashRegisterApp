@@ -16,20 +16,37 @@ struct PaymentView: View {
     @State private var alert = false
     
     var body: some View {
-        VStack {
-            List{
-                ForEach(orders){ order in
-                    let orderData = search(order.food)
-                    VStack(alignment:.leading) {
-                        HStack{
-                            Text("\(orderData.titile) \(orderData.subtitle)")
-                                .font(.title2)
-                            Spacer()
-                            Text("\(orderData.price * order.count)円")
-                                .font(.title3)
+        ZStack(alignment: .bottom) {
+            Form{
+                Section{
+                    ForEach(orders){ order in
+                        let orderData = search(order.food)
+                        VStack(alignment:.leading) {
+                            HStack{
+                                Text("\(orderData.titile) \(orderData.subtitle)")
+                                    .font(.title2)
+                                Spacer()
+                                Text("\(orderData.price * order.count)円")
+                                    .font(.title3)
+                            }
+                            Text("数量 \(order.count)個 | 商品価格 \(orderData.price)円")
+                                .foregroundColor(.secondary)
                         }
-                        Text("数量 \(order.count)個 | 商品価格 \(orderData.price)円")
-                            .foregroundColor(.secondary)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true){
+                            Button(role: .destructive,action: {
+                                orders[orders.firstIndex(where: {$0.food == order.food})!].count = 0
+                                orders.remove(at: orders.firstIndex(where: {$0.food == order.food})!)
+                            }){
+                                Image(systemName: "trash.fill")
+                            }
+                        }
+//                        .onChange(of: orders[orders.firstIndex(where: {$0.food == order.food})!].count, perform: { value in
+//                            if value == 0{
+//                                withAnimation{
+//                                    orders.remove(at: orders.firstIndex(where: {$0.food == order.food})!)
+//                                }
+//                            }
+//                        })
                     }
                 }
             }
@@ -48,23 +65,25 @@ struct PaymentView: View {
                     .font(.system(size: 30))
                     .padding(.leading)
                     Spacer()
-                    Button(action: {
-                        payBySquare(price: totalPrice(), store: settings.store,method: .cash)
-                    }){
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15)
-                                .frame(width: 150, height: 100)
-                                .foregroundColor(Color(UIColor.secondarySystemBackground))
-                            VStack {
-                                Image(systemName: "banknote")
-                                    .font(.system(size: 60))
-                                Text("現金決済")
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.primary)
+                    if totalPrice() != 0{
+                        Button(action: {
+                            payBySquare(price: totalPrice(), store: settings.store,method: .cash)
+                        }){
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .frame(width: 150, height: 100)
+                                    .foregroundColor(Color(UIColor.secondarySystemBackground))
+                                VStack {
+                                    Image(systemName: "banknote")
+                                        .font(.system(size: 60))
+                                    Text("現金決済")
+                                        .font(.system(size: 20))
+                                        .foregroundColor(.primary)
+                                }
                             }
                         }
+                            .accentColor(.primary)
                     }
-                        .accentColor(.primary)
                     if totalPrice() >= 100{
                         Button(action: {
                             payBySquare(price: totalPrice(), store: settings.store,method: .card)
@@ -107,7 +126,6 @@ struct PaymentView: View {
         .alert(isPresented: $alert, content: {
             Alert(title: Text("決済失敗"), message: Text("もう一度お試しください"))
         })
-        .navigationTitle("決済")
     }
     func totalPrice() -> Int {
         var content = Int()

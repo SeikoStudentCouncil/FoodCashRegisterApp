@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import CodeScanner
+import CodeScanner
 
 struct ScanView: View {
     @Binding var orders : [FoodOrder]
@@ -14,7 +14,29 @@ struct ScanView: View {
         ZStack {
             Rectangle()
                 .foregroundColor(Color(UIColor.systemGroupedBackground))
-            Text("Hello, World!")
+            CodeScannerView(codeTypes: [.ean8,.ean13], simulatedData: "4901777334410", completion: self.handleScan)
+                .frame(width: 500, height: 500)
+                .cornerRadius(30)
+        }
+    }
+    
+    func handleScan(result: Result<ScanResult, ScanError>) {
+        switch result {
+        case .success(let result):
+            let code = result.string
+            if menuDataBase().first(where: {$0.id == code}) != nil{
+                withAnimation{
+                    if let index = orders.firstIndex(where: { $0.food == code }){
+                        orders[index].count += 1
+                    } else {
+                        orders.append(FoodOrder(food: code, count: 1))
+                    }
+                }
+            } else {
+                print("Barcode Not Found")
+            }
+        case .failure(let error):
+            print("Scanning failed: \(error.localizedDescription)")
         }
     }
 }
