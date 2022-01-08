@@ -10,6 +10,7 @@ import SquarePointOfSaleSDK
 
 struct PaymentView: View {
     @Binding var orders : [FoodOrder]
+    @Binding var scanMode : Bool
     @EnvironmentObject private var settings : Settings
     @State private var sheetIsActive = false
     @State private var change: Int? =  nil
@@ -20,31 +21,7 @@ struct PaymentView: View {
             Form{
                 Section{
                     ForEach(orders){ order in
-                        let orderData = search(order.food)
-                        VStack(alignment:.leading) {
-                            HStack{
-                                Text("\(orderData.titile) \(orderData.subtitle)")
-                                    .font(.title2)
-                                Spacer()
-                                Text("\(orderData.price * order.count)円")
-                                    .font(.title3)
-                            }
-                            Text("数量 \(order.count)個 | 商品価格 \(orderData.price)円")
-                                .foregroundColor(.secondary)
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true){
-                            Button(role: .destructive,action: {
-                                orders[orders.firstIndex(where: {$0.food == order.food})!].count = 0
-                                orders.remove(at: orders.firstIndex(where: {$0.food == order.food})!)
-                            }){
-                                Image(systemName: "trash.fill")
-                            }
-                        }
-                        .swipeActions(edge: .leading, allowsFullSwipe: false){
-                            Stepper(value: .constant(3), in: 1...20){
-                                EmptyView()
-                            }
-                        }
+                        RowView(orders: $orders, scanMode: $scanMode, order: order)
                         
 //                        .onChange(of: orders[orders.firstIndex(where: {$0.food == order.food})!].count, perform: { value in
 //                            if value == 0{
@@ -143,9 +120,45 @@ struct PaymentView: View {
     }
 }
 
+private struct RowView: View {
+    @Binding var orders : [FoodOrder]
+    @Binding var scanMode : Bool
+    @EnvironmentObject private var settings : Settings
+    let order : FoodOrder
+    var body: some View {
+        let foodData = search(order.food)
+        if let index = orders.firstIndex(where: {$0.food == order.food}){
+            HStack{
+                VStack(alignment:.leading) {
+                    Text("\(foodData.titile) \(foodData.subtitle)")
+                        .font(.title2)
+                    Text("数量 \(order.count)個 | 商品価格 \(foodData.price)円")
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                if scanMode{
+                    Stepper(value: $orders[index].count, in: 1...20){
+                        EmptyView()
+                    }
+                    .frame(width: 100)
+                }
+                Text("\(foodData.price * order.count)円")
+                    .font(.title3)
+            }
+            .swipeActions(edge: .trailing, allowsFullSwipe: true){
+                Button(role: .destructive,action: {
+                    orders[index].count = 0
+                    orders.remove(at: index)
+                }){
+                    Image(systemName: "trash.fill")
+                }
+            }
+        }
+    }
+}
 
 struct PaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentView(orders: .constant([FoodOrder(food: "hogehoge", count: 3)]))
+        PaymentView(orders: .constant([FoodOrder(food: "hogehoge", count: 3)]), scanMode: .constant(true))
     }
 }

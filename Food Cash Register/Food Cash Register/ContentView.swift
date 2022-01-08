@@ -64,7 +64,7 @@ struct ContentView: View {
                     .navigationTitle(scan ? "バーコードスキャン" : "商品リスト")
                     .navigationBarTitleDisplayMode(.inline)
                 }
-                PaymentView(orders: $inCart)
+                PaymentView(orders: $inCart, scanMode: $scan)
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }
