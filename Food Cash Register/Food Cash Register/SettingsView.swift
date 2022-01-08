@@ -9,11 +9,14 @@ import SwiftUI
 
 class Settings :ObservableObject{
     @Published var store : String
-    @Published var scan = true
+    @Published var scan : Bool
     @Published var stores : [String]
     
     func saveStoreSetting(){
         UserDefaults.standard.set(store, forKey: "StoreSetting")
+    }
+    func saveScanFeatureSetting(){
+        UserDefaults.standard.set(scan, forKey: "ScanFeatureSetting")
     }
     init(){
         let storeOptions = getStoreOptions()
@@ -23,6 +26,7 @@ class Settings :ObservableObject{
         } else {
             self.store = storeOptions[0]
         }
+        self.scan = UserDefaults.standard.bool(forKey: "ScanFeatureSetting")
     }
 }
 
@@ -44,11 +48,14 @@ struct SettingsView: View {
                     settings.saveStoreSetting()
                 })
             }
-//            Section(header:Text("実験的機能")){
-//                Toggle(isOn: $settings.scan) {
-//                    Text("バーコードスキャン")
-//                }
-//            }
+            Section(header:Text("実験的機能")){
+                Toggle(isOn: $settings.scan.animation()) {
+                    Text("バーコードスキャン")
+                }
+                .onChange(of: settings.scan, perform: {value in
+                    settings.saveScanFeatureSetting()
+                })
+            }
         }
         .navigationTitle("設定")
     }

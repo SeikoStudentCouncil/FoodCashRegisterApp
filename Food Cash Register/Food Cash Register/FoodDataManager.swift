@@ -9,13 +9,15 @@ import Foundation
 
 func menuDataBase() -> [FoodDetail] {
     var content = [FoodDetail]()
+    var id = 0
     let path = Bundle.main.path(forResource:"menu", ofType:"csv")!
     do{
         let csvData = try String(contentsOfFile: path,encoding:String.Encoding.utf8)
         csvData.components(separatedBy: .newlines).forEach{ each in
             if !each.isEmpty{
                 let data = each.components(separatedBy: ",")
-                content.append(FoodDetail(id: data[4], store: data[0], titile: data[1], subtitle: data[2], price: Int(data[3])!))
+                content.append(FoodDetail(id: String(id), store: data[0], titile: data[1], subtitle: data[2], price: Int(data[3])!, jan: data[4]))
+                id += 1
             }
         }
         return content

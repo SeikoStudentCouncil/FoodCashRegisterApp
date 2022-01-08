@@ -9,6 +9,7 @@ import SwiftUI
 import CodeScanner
 
 struct ScanView: View {
+    @State private var scanned = false
     @Binding var orders : [FoodOrder]
     var body: some View {
         ZStack {
@@ -24,12 +25,12 @@ struct ScanView: View {
         switch result {
         case .success(let result):
             let code = result.string
-            if menuDataBase().first(where: {$0.id == code}) != nil{
+            if let order = menuDataBase().first(where: {$0.jan == code}){
                 withAnimation{
-                    if let index = orders.firstIndex(where: { $0.food == code }){
+                    if let index = orders.firstIndex(where: { $0.food == order.id }){
                         orders[index].count += 1
                     } else {
-                        orders.append(FoodOrder(food: code, count: 1))
+                        orders.append(FoodOrder(food: order.id, count: 1))
                     }
                 }
             } else {

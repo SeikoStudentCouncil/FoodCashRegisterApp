@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var showSettings = false
     @State private var scan = false
     @State private var inCart = [FoodOrder]()
+    @EnvironmentObject var settings : Settings
     var body: some View {
         ZStack{
             Rectangle()
@@ -18,11 +19,17 @@ struct ContentView: View {
                 .ignoresSafeArea()
             HStack{
                 NavigationView{
-                    TabView(selection: $scan){
-                        FoodListView(orders: $inCart).tag(false)
-                        ScanView(orders: $inCart).tag(true)
+                    Group{
+                    if !settings.scan{
+                        FoodListView(orders: $inCart)
+                    } else {
+                        TabView(selection: $scan){
+                            FoodListView(orders: $inCart).tag(false)
+                            ScanView(orders: $inCart).tag(true)
+                        }
+                        .tabViewStyle(.page)
                     }
-                    .tabViewStyle(.page)
+                    }
                     .toolbar{
                         ToolbarItem(placement: .navigationBarLeading){
                             Button(action: {
@@ -32,11 +39,13 @@ struct ContentView: View {
                             })
                         }
                         ToolbarItem(placement: .navigationBarTrailing){
+                            if settings.scan{
                             Picker(selection: $scan.animation(), content: {
                                 Image(systemName: "list.bullet").tag(false)
                                 Image(systemName: "barcode.viewfinder").tag(true)
                             }, label: {Text("モード選択")})
                                 .pickerStyle(.segmented)
+                            }
                         }
                     }
                     .sheet(isPresented: $showSettings, content: {
@@ -53,6 +62,7 @@ struct ContentView: View {
                         }
                     })
                     .navigationTitle(scan ? "バーコードスキャン" : "商品リスト")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
                 PaymentView(orders: $inCart)
             }

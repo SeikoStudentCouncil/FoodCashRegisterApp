@@ -14,6 +14,7 @@ struct FoodDetail :Identifiable{
     let titile: String
     let subtitle: String
     let price: Int
+    let jan: String
 }
 
 struct FoodOrder :Identifiable{

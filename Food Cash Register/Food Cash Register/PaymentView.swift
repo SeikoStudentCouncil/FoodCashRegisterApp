@@ -40,6 +40,12 @@ struct PaymentView: View {
                                 Image(systemName: "trash.fill")
                             }
                         }
+                        .swipeActions(edge: .leading, allowsFullSwipe: false){
+                            Stepper(value: .constant(3), in: 1...20){
+                                EmptyView()
+                            }
+                        }
+                        
 //                        .onChange(of: orders[orders.firstIndex(where: {$0.food == order.food})!].count, perform: { value in
 //                            if value == 0{
 //                                withAnimation{
@@ -121,6 +127,7 @@ struct PaymentView: View {
                             orders = [FoodOrder]()
                         }
             } catch{
+                print("Error occured while opening url scheme")
             }
         })
         .alert(isPresented: $alert, content: {
