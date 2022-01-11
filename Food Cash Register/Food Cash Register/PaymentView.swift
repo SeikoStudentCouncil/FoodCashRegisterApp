@@ -21,8 +21,9 @@ struct PaymentView: View {
             Form{
                 Section{
                     ForEach(orders){ order in
-                        RowView(orders: $orders, scanMode: $scanMode, order: order)
-                        
+                        if order.count != 0{
+                            RowView(orders: $orders, scanMode: $scanMode, order: order)
+                        }
 //                        .onChange(of: orders[orders.firstIndex(where: {$0.food == order.food})!].count, perform: { value in
 //                            if value == 0{
 //                                withAnimation{
@@ -137,7 +138,7 @@ private struct RowView: View {
                 }
                 Spacer()
                 if scanMode{
-                    Stepper(value: $orders[index].count, in: 1...20){
+                    Stepper(value: ($orders[index].count).animation(), in: 0...20){
                         EmptyView()
                     }
                     .frame(width: 100)
@@ -147,8 +148,9 @@ private struct RowView: View {
             }
             .swipeActions(edge: .trailing, allowsFullSwipe: true){
                 Button(role: .destructive,action: {
-                    orders[index].count = 0
-                    orders.remove(at: index)
+                    withAnimation{
+                        orders[index].count = 0
+                    }
                 }){
                     Image(systemName: "trash.fill")
                 }

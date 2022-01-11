@@ -75,11 +75,7 @@ private struct EachFoodView: View {
             .onChange(of: count, perform: { value in
                 withAnimation{
                     if let index = orders.firstIndex(where: { $0.food == data.id }){
-                        if value == 0 {
-                            orders.remove(at: index)
-                        } else{
-                            orders[index].count = value
-                        }
+                        orders[index].count = value
                     } else{
                         orders.append(FoodOrder(food: data.id, count: value))
                     }
@@ -92,7 +88,6 @@ private struct EachFoodView: View {
                 }
             })
         }
-//        .transition(.slide)
     }
 }
 
