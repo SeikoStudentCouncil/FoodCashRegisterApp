@@ -28,6 +28,7 @@ struct ContentView: View {
                             ScanView(orders: $inCart).tag(true)
                         }
                         .tabViewStyle(.page)
+                        .ignoresSafeArea()
                     }
                     }
                     .toolbar{
