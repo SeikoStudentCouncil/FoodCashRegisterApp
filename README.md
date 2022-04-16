@@ -28,7 +28,8 @@
     決済方法を聞いて選んで、カードリーダーにかざしてもらう。決済が完了すると、元のアプリに戻る。
     ![square_e-payment_selection](https://user-images.githubusercontent.com/87298805/155630887-0cf5597d-9b31-4ae4-ba18-e669f56b078b.jpg)
     ![square_e-payment_scan](https://user-images.githubusercontent.com/87298805/155631143-56cc3537-5582-4bcf-b6bf-be960800e653.jpg)
-## 注意
+## 注意事項
+### SquareAPI　トークン
 [Private.swift](/Food%20Cash%20Register/Food%20Cash%20Register/Private.swift)内のSquare API用のIDは[Square Developer](https://developer.squareup.com/jp/ja)にて割り当てられるIDを入力してください。
 ```
 import Foundation
@@ -37,3 +38,16 @@ let callbackURL = URL(string: "food-register-app://")! //アプリにリダイ�
 let applicationID = //Square APIの ApplicationID
 let locationID = //Square APIの LocationID
 ```
+### アプリケーションスキーム
+Square POSレジアプリケーションが遷移して戻ってくるために、[Square Developer](https://developer.squareup.com/jp/ja)側でこのアプリケーションのURLスキームを設定してください。
+詳しくは、[Point of Sale API公式リファレンス(英語)](https://developer.squareup.com/docs/pos-api/build-on-ios)を参照してください
+### メニューの編集
+このアプリでは内包されている[csvファイル](/Food%20Cash%20Register/Food%20Cash%20Register/menu.csv)を利用して、設定画面の食品店舗一覧やメニュー表を生成しています。
+形式は以下の通りです。
+```
+店舗名,タイトル,サブタイトル(任意),価格,JANコード(任意)
+```
+- タイトルには商品の名前を、サブタイトルには味や用量などを記入してください。
+（例）`牛肉どまん中,プレーン`
+- 価格は半角数字の自然数を入力してください。
+- JANコードはバーコードでカートに追加機能を使用したいときに使用します。
