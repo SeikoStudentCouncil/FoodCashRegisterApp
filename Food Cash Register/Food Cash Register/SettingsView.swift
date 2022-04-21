@@ -38,8 +38,8 @@ struct SettingsView: View {
             Section(header:Text("店舗"),footer:Text("この情報に基づいてメニューが変更されます")){
                 HStack {
                     Picker(selection: $settings.store, label: Text("変更"), content: {
-                        ForEach((0..<settings.stores.count), id: \.self){ index in
-                            Text(settings.stores[index])
+                        ForEach(settings.stores, id: \.self){ store in
+                            Text(store)
                         }
                     })
                     .pickerStyle(MenuPickerStyle())
